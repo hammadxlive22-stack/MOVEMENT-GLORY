@@ -1,0 +1,5 @@
+mkdir -p ~/GuildFast
+cp -r "/storage/emulated/0/Guild/." ~/GuildFast/
+cd ~/GuildFast
+ls -lh _secure_main*
+python start.py
