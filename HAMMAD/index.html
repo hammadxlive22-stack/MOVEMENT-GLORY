@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAMMAD Control Panel</title>
+    <style>
+        body { background-color: #0f172a; color: #fff; font-family: system-ui, sans-serif; text-align: center; padding: 25px; }
+        .card { background: #1e293b; padding: 25px; border-radius: 12px; max-width: 450px; margin: 0 auto; box-shadow: 0 10px 25px rgba(0,0,0,0.5); text-align: left; }
+        .step { margin-bottom: 20px; padding: 15px; background: #334155; border-radius: 8px; border-left: 4px solid #38bdf8; }
+        .step-danger { border-left-color: #ef4444; }
+        input, button { width: 100%; padding: 10px; margin-top: 8px; border-radius: 6px; border: none; box-sizing: border-box; font-size: 14px; }
+        input { background: #0f172a; color: #fff; border: 1px solid #475569; }
+        button { background: #2563eb; color: white; font-weight: bold; cursor: pointer; }
+        button:hover { background: #1d4ed8; }
+        .btn-green { background: #16a34a; }
+        .btn-green:hover { background: #15803d; }
+        .btn-red { background: #ef4444; }
+        .btn-red:hover { background: #dc2626; }
+        h2 { text-align: center; color: #38bdf8; margin-bottom: 20px; }
+        h3 { margin: 0; color: #f8fafc; font-size: 15px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>HAMMAD Dashboard</h2>
+
+        <!-- Step 1: Bulk Account Creation with Count -->
+        <div class="step">
+            <h3>Step 1: Account Creation (Qty & Names)</h3>
+            <form action="/step1-create" method="POST">
+                <input type="text" name="base_username" placeholder="Base Username / Prefix" required>
+                <input type="password" name="password" placeholder="Password for all" required>
+                <input type="number" name="count" placeholder="Kitne accounts banane hain? (e.g. 5)" min="1" max="50" required>
+                <button type="submit">Accounts Generate Karein</button>
+            </form>
+        </div>
+
+        <!-- Step 2: Guild Join -->
+        <div class="step">
+            <h3>Step 2: Guild Join</h3>
+            <form action="/step2-guild" method="POST">
+                <input type="text" name="guild_id" placeholder="Guild ID" required>
+                <button type="submit">Join Guild</button>
+            </form>
+        </div>
+
+        <!-- Step 3: Match Start & Auto-Loop -->
+        <div class="step">
+            <h3>Step 3: Match Start & Auto-Loop</h3>
+            <form action="/step3-match" method="POST">
+                <button type="submit" class="btn-green">Start Match & Auto-Re-trigger</button>
+            </form>
+        </div>
+
+        <!-- Step 4: Delete Accounts -->
+        <div class="step step-danger">
+            <h3>Step 4: Delete All Accounts</h3>
+            <form action="/delete-accounts" method="POST" onsubmit="return confirm('Kya aap sare accounts delete karna chahte hain?');">
+                <button type="submit" class="btn-red">Delete All Accounts (rm -rf accs.txt)</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
